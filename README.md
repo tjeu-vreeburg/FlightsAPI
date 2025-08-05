@@ -110,7 +110,7 @@ Parameters for `GET /api/bookings`
 #### Requests
 <details>
 <summary>Flight Request</summary>
-```json
+```
 {
   "name": "Auckland Airport",
   "city": "Auckland",
@@ -123,7 +123,7 @@ Parameters for `GET /api/bookings`
 
 <details>
 <summary>Booking Request</summary>
-```json
+```
 {
   "flightId": 1,
   "firstName": "John",
@@ -136,7 +136,7 @@ Parameters for `GET /api/bookings`
 
 <details>
 <summary>Booking Request</summary>
-```json
+```
 {
   "flightId": 1,
   "firstName": "John",
@@ -150,7 +150,7 @@ Parameters for `GET /api/bookings`
 #### Error Responses
 <details>
 <summary>Conflict Response</summary>
-```json
+```
 {
   "error": "ConflictException",
   "message": "Cannot delete flight with existing bookings.",
@@ -161,7 +161,7 @@ Parameters for `GET /api/bookings`
 
 <details>
 <summary>NotFound Response</summary>
-```json
+```
 {
   "error": "NotFound",
   "message": "Could not find flight with id: 99",
