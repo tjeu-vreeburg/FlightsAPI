@@ -1,0 +1,41 @@
+package com.tjeuvreeburg.flightapi.functional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+public class FlightControllerFunctionalTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    // Remember that default records get created in data.sql
+
+    @Test
+    public void getFlightSuccess() throws Exception {
+        mockMvc.perform(get("/api/flights/details/{id}", 1L)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.originId").value(1L))
+                .andExpect(jsonPath("$.destinationId").value(2L));
+    }
+
+    @Test
+    public void getFlightFailure() throws Exception {
+        mockMvc.perform(get("/api/flights/details/{id}", 2L)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("Could not find flight with id: 2"));
+    }
+}
+
