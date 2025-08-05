@@ -18,8 +18,6 @@ public class BookingControllerFunctionalTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // Remember that default records get created in data.sql
-
     @Test
     public void getBookingSuccess() throws Exception {
         mockMvc.perform(get("/api/bookings/details/{id}", 1L)

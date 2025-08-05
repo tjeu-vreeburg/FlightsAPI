@@ -18,8 +18,6 @@ public class FlightControllerFunctionalTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // Remember that default records get created in data.sql
-
     @Test
     public void getFlightSuccess() throws Exception {
         mockMvc.perform(get("/api/flights/details/{id}", 1L)
