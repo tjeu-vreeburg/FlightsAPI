@@ -36,6 +36,10 @@ spring.jpa.hibernate.ddl-auto=update
 ./gradlew test
 ```
 
+# Postman
+Import the premade collection in postman todo some testing:
+[FlightAPI Collection](src/main/resources/FlightAPI.postman_collection.json]
+
 # API Endpoints
 ### Flight  
 | Method | Endpoint                    | Description                                    |
