@@ -105,3 +105,67 @@ Parameters for `GET /api/bookings`
 - `page`: The page number
 - `size`: The amount of entries per page
 
+# API Requests and Responses
+
+#### Requests
+<details>
+<summary>Flight Request</summary>
+```json
+{
+  "name": "Auckland Airport",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "iata": "AKL",
+  "icao": "NZAA"
+}
+```
+</details>
+
+<details>
+<summary>Booking Request</summary>
+```json
+{
+  "flightId": 1,
+  "firstName": "John",
+  "lastName": "Smith",
+  "cabinClass": "Economy",
+  "seat": "2A"
+}
+```
+</details>
+
+<details>
+<summary>Booking Request</summary>
+```json
+{
+  "flightId": 1,
+  "firstName": "John",
+  "lastName": "Smith",
+  "cabinClass": "Economy",
+  "seat": "2A"
+}
+```
+</details>
+
+#### Error Responses
+<details>
+<summary>Conflict Response</summary>
+```json
+{
+  "error": "ConflictException",
+  "message": "Cannot delete flight with existing bookings.",
+  "timeStamp": "2025-08-06T10:00:00.0000000"
+}
+```
+</details>
+
+<details>
+<summary>NotFound Response</summary>
+```json
+{
+  "error": "NotFound",
+  "message": "Could not find flight with id: 99",
+  "timeStamp": "2025-08-06T10:00:00.0000000"
+}
+```
+</details>
