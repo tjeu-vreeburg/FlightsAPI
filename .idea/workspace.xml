@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ce35f790-dcd2-42b8-8b88-8e04eab4a819" name="Changes" comment="1.0.3&#10;&#10;- Update gitignore">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;tjeu-vreeburg&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tjeu-vreeburg/FlightsAPI.git&quot;,
+    &quot;accountId&quot;: &quot;67fac37c-f6dc-40f4-b05b-307a8edfe9c7&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="30nSG56DBxPIBxhR0YziHEB3MFp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FlightApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AirportServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AirportServiceTest.verifyFlightExists.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build FlightsAPI.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [:com.tjeuvreeburg.flightapi.FlightApiApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [assemble].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [clean test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FlightsAPI [test].executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportControllerFunctionalTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportControllerFunctionalTest.getAirportFailure.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportControllerFunctionalTest.getFlightSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportControllerIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportControllerTest.testCreateAirport.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportServiceTest.testAirportHasBeenDeleted.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AirportServiceTest.verifyAirportUpdated.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in FlightsAPI.test (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in FlightsAPI.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingControllerFunctionalTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceTest.verifyBookingExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookingServiceUnitTest.verifyBookingExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightControllerFunctionalTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightControllerFunctionalTest.getBookingSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightServiceTest.verifyFlightExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GlobalErrorHandlerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.tjeuvreeburg.flightapi.functional in FlightsAPI.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.tjeuvreeburg.flightapi.unit in FlightsAPI.test.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\husky\\AppData\\Roaming\\JetBrains\\IdeaIC2025.1\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tjeuvreeburg.flightapi.functional" />
+      <recent name="com.tjeuvreeburg.flightapi.services" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle clean test --refresh-dependencies" />
+      <command value="gradle test --info" />
+      <command value="gradle test" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.FlightsAPI [test]">
+    <configuration name="FlightsAPI [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="All in FlightsAPI.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlightsAPI.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in FlightsAPI.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlightsAPI.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookingServiceUnitTest.verifyBookingExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlightsAPI.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tjeuvreeburg.flightapi.unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tjeuvreeburg.flightapi.unit" />
+      <option name="MAIN_CLASS_NAME" value="com.tjeuvreeburg.flightapi.unit.BookingServiceUnitTest" />
+      <option name="METHOD_NAME" value="verifyBookingExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.tjeuvreeburg.flightapi.unit in FlightsAPI.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlightsAPI.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tjeuvreeburg.flightapi.unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tjeuvreeburg.flightapi.unit" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.FlightsAPI [test]" />
+        <item itemvalue="JUnit.All in FlightsAPI.test (1)" />
+        <item itemvalue="JUnit.BookingServiceUnitTest.verifyBookingExists" />
+        <item itemvalue="JUnit.All in FlightsAPI.test" />
+        <item itemvalue="JUnit.com.tjeuvreeburg.flightapi.unit in FlightsAPI.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce35f790-dcd2-42b8-8b88-8e04eab4a819" name="Changes" comment="" />
+      <created>1754261745850</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754261745850</updated>
+    </task>
+    <task id="LOCAL-00001" summary="1.0.0&#10;&#10;Updates">
+      <option name="closed" value="true" />
+      <created>1754379523992</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754379523992</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1.0.1&#10;&#10;- Added BadRequestException&#10;- Updated GlobalErrorHandler to include error handling improvements&#10;- Improved ResourceNotFoundException&#10;- Formatted code">
+      <option name="closed" value="true" />
+      <created>1754380785258</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754380785258</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1.0.2&#10;&#10;- Added Functional Tests&#10;- Added Unit Tests&#10;- Made some improvements">
+      <option name="closed" value="true" />
+      <created>1754394661319</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754394661319</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1.0.3&#10;&#10;- Update gitignore">
+      <option name="closed" value="true" />
+      <created>1754394821482</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754394821482</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.0.0&#10;&#10;Updates" />
+    <MESSAGE value="1.0.1&#10;&#10;- Added BadRequestException&#10;- Updated GlobalErrorHandler to include error handling improvements&#10;- Improved ResourceNotFoundException&#10;- Formatted code" />
+    <MESSAGE value="1.0.2&#10;&#10;- Added Functional Tests&#10;- Added Unit Tests&#10;- Made some improvements" />
+    <MESSAGE value="1.0.3&#10;&#10;- Update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.3&#10;&#10;- Update gitignore" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FlightsAPI$FlightApiApplication.ic" NAME="FlightApiApplication Coverage Results" MODIFIED="1754283815488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tjeuvreeburg.flightapi.*</FILTER>
+    </SUITE>
+  </component>
+</project>
