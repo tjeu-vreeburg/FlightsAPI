@@ -37,7 +37,7 @@ spring.jpa.hibernate.ddl-auto=update
 ```
 
 # Postman
-Import the premade collection in postman todo some testing:
+Import the premade collection in postman for api testing:
 [FlightAPI Collection](src/main/resources/FlightAPI.postman_collection.json)
 
 <details>
