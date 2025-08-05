@@ -5,12 +5,13 @@ import com.tjeuvreeburg.flightapi.entities.Airport;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class AirportService implements IService<Airport> {
+public class AirportService implements GenericService<Airport, Specification<Airport>> {
 
     private final AirportRepository airportRepository;
 

@@ -19,8 +19,8 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PostMapping
-    public ResponseEntity<Booking> addBooking(@Valid @RequestBody Booking booking) {
+    @PostMapping("/create")
+    public ResponseEntity<Booking> createBooking(@Valid @RequestBody Booking booking) {
         return ResponseEntity.ok(bookingService.save(booking));
     }
 
@@ -34,19 +34,19 @@ public class BookingController {
         return PaginatedResponse.from(bookingPage);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking, @PathVariable Long id) {
         return ResponseEntity.ok(bookingService.update(id, booking));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteBooking(@PathVariable long id) {
+    @DeleteMapping("/cancel/{id}")
+    public ResponseEntity<Boolean> cancelBooking(@PathVariable long id) {
         bookingService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Booking> getBooking(@PathVariable long id) {
+    @GetMapping("/details/{id}")
+    public ResponseEntity<Booking> getBookingDetails(@PathVariable long id) {
         return ResponseEntity.ok(bookingService.getById(id));
     }
 }

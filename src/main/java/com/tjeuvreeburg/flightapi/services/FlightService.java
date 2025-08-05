@@ -4,16 +4,15 @@ import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
 import com.tjeuvreeburg.flightapi.entities.Flight;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
 import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
+import com.tjeuvreeburg.flightapi.specifications.FlightSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @Transactional(readOnly = true)
-public class FlightService implements IService<Flight> {
+public class FlightService implements GenericService<Flight, FlightSpecification> {
 
     private final AirportRepository airportRepository;
     private final FlightRepository flightRepository;
@@ -21,10 +20,6 @@ public class FlightService implements IService<Flight> {
     public FlightService(AirportRepository airportRepository, FlightRepository flightRepository) {
         this.airportRepository = airportRepository;
         this.flightRepository = flightRepository;
-    }
-
-    public List<Flight> findFlightsWithAirport(Long id) {
-        return flightRepository.findFlightsWithAirport(id);
     }
 
     @Override
@@ -36,7 +31,7 @@ public class FlightService implements IService<Flight> {
     @Override
     public Flight getById(long id) {
         return flightRepository.findById(id)
-                .orElseThrow(() -> ResourceNotFoundException.of("flight ", id));
+                .orElseThrow(() -> ResourceNotFoundException.of("flight", id));
     }
 
     @Override
@@ -74,7 +69,7 @@ public class FlightService implements IService<Flight> {
     }
 
     @Override
-    public Page<Flight> findAll(Pageable pageable) {
-        return flightRepository.findAll(pageable);
+    public Page<Flight> findAll(FlightSpecification specification, Pageable pageable) {
+        return flightRepository.findAll(specification, pageable);
     }
 }

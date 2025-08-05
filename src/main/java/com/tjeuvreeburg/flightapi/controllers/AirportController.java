@@ -18,8 +18,8 @@ public class AirportController {
         this.airportService = airportService;
     }
 
-    @PostMapping
-    public ResponseEntity<Airport> addAirport(@Valid @RequestBody Airport airport) {
+    @PostMapping("/create")
+    public ResponseEntity<Airport> createAirport(@Valid @RequestBody Airport airport) {
         return ResponseEntity.ok(airportService.save(airport));
     }
 
@@ -33,19 +33,19 @@ public class AirportController {
         return PaginatedResponse.from(airportPage);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Airport> updateAirport(@RequestBody Airport airport, @PathVariable Long id) {
         return ResponseEntity.ok(airportService.update(id, airport));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteAirport(@PathVariable long id) {
         airportService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Airport> getAirport(@PathVariable long id) {
+    @GetMapping("/details/{id}")
+    public ResponseEntity<Airport> getAirportDetails(@PathVariable long id) {
         return ResponseEntity.ok(airportService.getById(id));
     }
 }
