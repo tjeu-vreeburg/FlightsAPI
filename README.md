@@ -9,9 +9,9 @@ A Spring Boot REST API for managing airports, flights and bookings.
 # Technologies
 These are all of the different libaries, languages and frameworks used for developing this API.
 - **Backend:** Sprint Boot 3
-- **Database:** JPA (with Hibernate)
+- **Database:** JPA (with Hibernate) | H2 (In memory Cache)
 - **Build Tools**: Gradle
-- **Testing:** JUnit, Mockito
+- **Testing:** JUnit, Mockito, SpringBootTest
 - **Language:** Java 21
 # Getting Started
 
