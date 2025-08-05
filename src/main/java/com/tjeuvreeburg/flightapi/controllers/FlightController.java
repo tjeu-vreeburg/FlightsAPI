@@ -44,13 +44,13 @@ public class FlightController {
     }
 
     @DeleteMapping("/cancel/{id}")
-    public ResponseEntity<Boolean> cancelFlight(long id) {
+    public ResponseEntity<Boolean> cancelFlight(@PathVariable Long id) {
         flightService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<Flight> getFlightDetails(@PathVariable long id) {
+    public ResponseEntity<Flight> getFlightDetails(@PathVariable Long id) {
         return ResponseEntity.ok(flightService.getById(id));
     }
 }

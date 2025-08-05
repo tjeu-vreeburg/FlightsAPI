@@ -39,13 +39,13 @@ public class AirportController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteAirport(@PathVariable long id) {
+    public ResponseEntity<Boolean> deleteAirport(@PathVariable Long id) {
         airportService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<Airport> getAirportDetails(@PathVariable long id) {
+    public ResponseEntity<Airport> getAirportDetails(@PathVariable Long id) {
         return ResponseEntity.ok(airportService.getById(id));
     }
 }

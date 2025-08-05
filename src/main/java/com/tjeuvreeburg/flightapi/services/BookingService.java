@@ -58,7 +58,7 @@ public class BookingService implements GenericService<Booking, Specification<Boo
                     booking.setSeat(booking.getSeat());
                     return bookingRepository.saveAndFlush(booking);
                 })
-                .orElseGet(() -> bookingRepository.saveAndFlush(newBooking));
+                .orElseThrow(() -> ResourceNotFoundException.of("booking", id));
     }
 
     @Override

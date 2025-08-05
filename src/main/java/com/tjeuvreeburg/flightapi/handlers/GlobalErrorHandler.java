@@ -1,6 +1,7 @@
 package com.tjeuvreeburg.flightapi.handlers;
 
 import com.tjeuvreeburg.flightapi.exceptions.BadRequestException;
+import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
 import com.tjeuvreeburg.flightapi.responses.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
@@ -33,6 +34,12 @@ public class GlobalErrorHandler {
     public ResponseEntity<ErrorResponse> handleBadRequest(BadRequestException ex) {
         var error = new ErrorResponse("BadRequest", ex.getMessage(), LocalDateTime.now());
         return error.submit(HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ErrorResponse> handleBadRequest(ConflictException ex) {
+        var error = new ErrorResponse("Conflict", ex.getMessage(), LocalDateTime.now());
+        return error.submit(HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

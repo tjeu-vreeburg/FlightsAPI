@@ -2,7 +2,9 @@ package com.tjeuvreeburg.flightapi.unit;
 
 import com.tjeuvreeburg.flightapi.entities.Airport;
 import com.tjeuvreeburg.flightapi.entities.Flight;
+import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.repositories.BookingRepository;
 import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
 import com.tjeuvreeburg.flightapi.services.FlightService;
 import com.tjeuvreeburg.flightapi.specifications.FlightSpecification;
@@ -27,6 +29,9 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class FlightServiceUnitTest {
+
+    @Mock
+    private BookingRepository bookingRepository;
 
     @Mock
     private FlightRepository flightRepository;
@@ -87,11 +92,12 @@ public class FlightServiceUnitTest {
 
     @Test
     public void verifyFlightHasBeenDeleted() {
-        doNothing().when(flightRepository).deleteById(1L);
+        when(bookingRepository.existsByFlightId(1L)).thenReturn(true);
 
-        flightService.delete(1L);
+        ConflictException ex = assertThrows(ConflictException.class, () -> flightService.delete(1L));
+        assertTrue(ex.getMessage().contains("Cannot cancel flight with existing bookings."));
 
-        verify(flightRepository, times(1)).deleteById(1L);
+        verify(flightRepository, times(0)).deleteById(1L);
     }
 
     @Test
@@ -99,10 +105,8 @@ public class FlightServiceUnitTest {
         when(flightRepository.findById(99L)).thenReturn(Optional.empty());
 
         var ex = assertThrows(ResourceNotFoundException.class, () -> flightService.getById(99L));
-        System.out.println(ex.getMessage());
         assertTrue(ex.getMessage().contains("Could not find flight with id: 99"));
 
         verify(flightRepository).findById(99L);
     }
-
 }

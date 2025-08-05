@@ -1,8 +1,10 @@
 package com.tjeuvreeburg.flightapi.unit;
 
 import com.tjeuvreeburg.flightapi.entities.Airport;
+import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
+import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
 import com.tjeuvreeburg.flightapi.services.AirportService;
 import com.tjeuvreeburg.flightapi.utilities.DataHelper;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +26,9 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class AirportServiceUnitTest {
+
+    @Mock
+    private FlightRepository flightRepository;
 
     @Mock
     private AirportRepository airportRepository;
@@ -78,12 +83,23 @@ class AirportServiceUnitTest {
     }
 
     @Test
-    public void verifyAirportHasBeenDeleted() {
-        doNothing().when(airportRepository).deleteById(1L);
+    public void verifyAirportCannotBeBecauseOfOriginDeleted() {
+        when(flightRepository.existsByOriginId(1L)).thenReturn(true);
 
-        airportService.delete(1L);
+        ConflictException ex = assertThrows(ConflictException.class, () -> airportService.delete(1L));
+        assertTrue(ex.getMessage().contains("Cannot delete airport with existing flights."));
 
-        verify(airportRepository, times(1)).deleteById(1L);
+        verify(airportRepository, never()).deleteById(1L);
+    }
+
+    @Test
+    public void verifyAirportCannotBeBecauseOfDestinationDeleted() {
+        when(flightRepository.existsByDestinationId(2L)).thenReturn(true);
+
+        ConflictException ex = assertThrows(ConflictException.class, () -> airportService.delete(2L));
+        assertTrue(ex.getMessage().contains("Cannot delete airport with existing flights."));
+
+        verify(airportRepository, never()).deleteById(2L);
     }
 
     @Test

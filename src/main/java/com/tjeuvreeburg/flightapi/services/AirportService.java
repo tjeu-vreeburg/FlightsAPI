@@ -1,8 +1,10 @@
 package com.tjeuvreeburg.flightapi.services;
 
+import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
 import com.tjeuvreeburg.flightapi.entities.Airport;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
+import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -14,14 +16,24 @@ import org.springframework.transaction.annotation.Transactional;
 public class AirportService implements GenericService<Airport, Specification<Airport>> {
 
     private final AirportRepository airportRepository;
+    private final FlightRepository flightRepository;
 
-    public AirportService(AirportRepository airportRepository) {
+    public AirportService(AirportRepository airportRepository, FlightRepository flightRepository) {
         this.airportRepository = airportRepository;
+        this.flightRepository = flightRepository;
     }
 
     @Override
     @Transactional
     public void delete(long id) {
+        if(flightRepository.existsByOriginId(id)) {
+            throw new ConflictException("delete", "airport", "flights");
+        }
+
+        if(flightRepository.existsByDestinationId(id)) {
+            throw new ConflictException("delete", "airport", "flights");
+        }
+
         airportRepository.deleteById(id);
     }
 
@@ -49,7 +61,7 @@ public class AirportService implements GenericService<Airport, Specification<Air
                     airport.setIcao(newAirport.getIcao());
                     return airportRepository.saveAndFlush(airport);
                 })
-                .orElseGet(() -> airportRepository.saveAndFlush(newAirport));
+                .orElseThrow(() -> ResourceNotFoundException.of("airport", id));
     }
 
     @Override

@@ -40,13 +40,13 @@ public class BookingController {
     }
 
     @DeleteMapping("/cancel/{id}")
-    public ResponseEntity<Boolean> cancelBooking(@PathVariable long id) {
+    public ResponseEntity<Boolean> cancelBooking(@PathVariable Long id) {
         bookingService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<Booking> getBookingDetails(@PathVariable long id) {
+    public ResponseEntity<Booking> getBookingDetails(@PathVariable Long id) {
         return ResponseEntity.ok(bookingService.getById(id));
     }
 }
