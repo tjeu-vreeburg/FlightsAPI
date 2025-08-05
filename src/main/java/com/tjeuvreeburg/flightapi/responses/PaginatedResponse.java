@@ -1,4 +1,4 @@
-package com.tjeuvreeburg.flightapi.entities;
+package com.tjeuvreeburg.flightapi.responses;
 
 import org.springframework.data.domain.Page;
 
@@ -23,5 +23,9 @@ public record PaginatedResponse<T>(
                 page.isLast(),
                 page.isFirst()
         );
+    }
+
+    public static <T> PaginatedResponse<T> from(Page<T> page) {
+        return new PaginatedResponse<>(page);
     }
 }

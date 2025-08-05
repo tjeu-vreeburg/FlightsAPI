@@ -1,4 +1,8 @@
 package com.tjeuvreeburg.flightapi.entities;
 
-public class IEntity {
+public interface IEntity {
+
+    Long getId();
+
+    void setId(Long id);
 }

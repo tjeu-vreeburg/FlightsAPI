@@ -1,30 +1,67 @@
-package com.tjeuvreeburg.flightapi.model;
+package com.tjeuvreeburg.flightapi.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "airports")
-public class Airport {
+public class Airport implements IEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
+    @Column(nullable = false)
+    private String name;
+
+    @NotBlank(message = "City is required")
+    @Column(nullable = false)
     private String city;
+
+    @NotBlank(message = "Country is required")
+    @Column(nullable = false)
     private String country;
+
+    @NotBlank(message = "IATA Code is required")
+    @Size(min = 3, max = 3, message = "IATA must be exactly 3 characters")
+    @Column(nullable = false, length = 3)
     private String iata;
+
+    @NotBlank(message = "ICAO Code is required")
+    @Size(min = 4, max = 4, message = "ICAO must be exactly 4 characters")
+    @Column(nullable = false, length = 4)
     private String icao;
 
     public Airport() {
 
     }
 
+    public Airport(String name, String city, String country, String iata, String icao) {
+        this.name = name;
+        this.city = city;
+        this.country = country;
+        this.iata = iata;
+        this.icao = icao;
+    }
+
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCity() {

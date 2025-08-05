@@ -1,14 +1,15 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
-import com.tjeuvreeburg.flightapi.model.Airport;
+import com.tjeuvreeburg.flightapi.entities.Airport;
+import com.tjeuvreeburg.flightapi.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.AirportService;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/airports")
+@RequestMapping("/api/airports")
 public class AirportController {
 
     private final AirportService airportService;
@@ -17,25 +18,34 @@ public class AirportController {
         this.airportService = airportService;
     }
 
-
-    @PostMapping("/")
-    public ResponseEntity<Airport> saveAirport(@RequestBody Airport airport) {
+    @PostMapping
+    public ResponseEntity<Airport> addAirport(@Valid @RequestBody Airport airport) {
         return ResponseEntity.ok(airportService.save(airport));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<Airport>> getAirports() {
-        return ResponseEntity.ok(airportService.findAll());
+    @GetMapping
+    public PaginatedResponse<Airport> getAirports(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        var pageable = PageRequest.of(page, size);
+        var airportPage = airportService.findAll(pageable);
+        return PaginatedResponse.from(airportPage);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Airport> getAirport(@PathVariable long id) {
-        return ResponseEntity.ok(airportService.getById(id));
+    @PutMapping("/{id}")
+    public ResponseEntity<Airport> updateAirport(@RequestBody Airport airport, @PathVariable Long id) {
+        return ResponseEntity.ok(airportService.update(id, airport));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteAirport(@PathVariable long id) {
         airportService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Airport> getAirport(@PathVariable long id) {
+        return ResponseEntity.ok(airportService.getById(id));
     }
 }

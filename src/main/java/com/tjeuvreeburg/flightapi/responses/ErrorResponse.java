@@ -1,5 +1,11 @@
-package com.tjeuvreeburg.flightapi.exceptions;
+package com.tjeuvreeburg.flightapi.responses;
 
-public record ErrorResponse(String error, String message, String timeStamp, int status) {
+import java.time.LocalDateTime;
+
+public record ErrorResponse(
+        String error,
+        String message,
+        LocalDateTime timeStamp
+) {
 
 }

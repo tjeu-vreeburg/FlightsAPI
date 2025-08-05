@@ -1,26 +1,31 @@
-package com.tjeuvreeburg.flightapi.model;
+package com.tjeuvreeburg.flightapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "flights")
-public class Flight {
+public class Flight implements IEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Flight number is required")
+    @Column(nullable = false)
     private Integer number;
 
+    @NotNull(message = "Origin airport id is required")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "origin_id", referencedColumnName = "id")
+    @JoinColumn(name = "origin_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore
     private Airport origin;
 
+    @NotNull(message = "Destination airport id is required")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "destination_id", referencedColumnName = "id")
+    @JoinColumn(name = "destination_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore
     private Airport destination;
 
@@ -28,10 +33,18 @@ public class Flight {
 
     }
 
+    public Flight(Integer number, Airport origin, Airport destination) {
+        this.number = number;
+        this.origin = origin;
+        this.destination = destination;
+    }
+
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
