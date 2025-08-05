@@ -1,5 +1,7 @@
-package com.tjeuvreeburg.flightapi.exceptions;
+package com.tjeuvreeburg.flightapi.handlers;
 
+import com.tjeuvreeburg.flightapi.exceptions.BadRequestException;
+import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
 import com.tjeuvreeburg.flightapi.responses.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -18,19 +20,19 @@ public class GlobalErrorHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneral(Exception ex) {
         var error = new ErrorResponse("InternalServerError", ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        return error.submit(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
         var error = new ErrorResponse("NotFound", ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return error.submit(HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorResponse> handleBadRequest(IllegalArgumentException ex) {
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handleBadRequest(BadRequestException ex) {
         var error = new ErrorResponse("BadRequest", ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        return error.submit(HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

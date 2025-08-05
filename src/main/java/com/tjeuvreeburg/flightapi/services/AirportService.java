@@ -26,8 +26,8 @@ public class AirportService implements IService<Airport> {
 
     @Override
     public Airport getById(long id) {
-        return airportRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Could not find airport with id: " + id));
+        return airportRepository.findById(id)
+                .orElseThrow(() -> ResourceNotFoundException.of("airport", id));
     }
 
 

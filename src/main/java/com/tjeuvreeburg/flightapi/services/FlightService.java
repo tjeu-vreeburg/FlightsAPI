@@ -36,7 +36,7 @@ public class FlightService implements IService<Flight> {
     @Override
     public Flight getById(long id) {
         return flightRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find flight with id: " + id));
+                .orElseThrow(() -> ResourceNotFoundException.of("flight ", id));
     }
 
     @Override
@@ -44,18 +44,16 @@ public class FlightService implements IService<Flight> {
     public Flight save(Flight flight) {
         var originId = flight.getOriginId();
         if (originId != null) {
-            var origin = airportRepository.findById(originId).orElseThrow(() ->
-                    new ResourceNotFoundException("Origin airport not found with id: " + originId)
-            );
+            var origin = airportRepository.findById(originId)
+                    .orElseThrow(() -> ResourceNotFoundException.of("origin airport", originId));
 
             flight.setOrigin(origin);
         }
 
         var destinationId = flight.getDestinationId();
         if (destinationId != null) {
-            var destination = airportRepository.findById(destinationId).orElseThrow(() ->
-                    new ResourceNotFoundException("Destination airport not found with id: " + destinationId)
-            );
+            var destination = airportRepository.findById(destinationId)
+                    .orElseThrow(() -> ResourceNotFoundException.of("desination airport", destinationId));
 
             flight.setDestination(destination);
         }

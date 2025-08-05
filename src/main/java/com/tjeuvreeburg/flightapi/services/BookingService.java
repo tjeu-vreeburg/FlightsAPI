@@ -29,8 +29,8 @@ public class BookingService implements IService<Booking> {
 
     @Override
     public Booking getById(long id) {
-        return bookingRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Could not find booking with id: " + id));
+        return bookingRepository.findById(id)
+                .orElseThrow(() -> ResourceNotFoundException.of("booking", id));
     }
 
     @Override
@@ -38,9 +38,9 @@ public class BookingService implements IService<Booking> {
     public Booking save(Booking booking) {
         var flightId = booking.getFlightId();
         if (flightId != null) {
-            var flight = flightRepository.findById(flightId).orElseThrow(() ->
-                    new ResourceNotFoundException("Could not find flight with id:" + flightId)
-            );
+            var flight = flightRepository.findById(flightId)
+                    .orElseThrow(() -> ResourceNotFoundException.of("flight", flightId));
+
             booking.setFlight(flight);
         }
         return bookingRepository.saveAndFlush(booking);
