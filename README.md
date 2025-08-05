@@ -1,4 +1,4 @@
-# Flight API
+# ✈︎ Flight API
 
 A Spring Boot REST API for managing airports, flights and bookings.
 
@@ -167,5 +167,5 @@ Parameters for `GET /api/bookings`
   "message": "Could not find flight with id: 99",
   "timeStamp": "2025-08-06T10:00:00.0000000"
 }
-```
 </details>
+```
