@@ -38,7 +38,31 @@ spring.jpa.hibernate.ddl-auto=update
 
 # Postman
 Import the premade collection in postman todo some testing:
-[FlightAPI Collection](src/main/resources/FlightAPI.postman_collection.json]
+[FlightAPI Collection](src/main/resources/FlightAPI.postman_collection.json)
+
+<details>
+<summary>How to Import a Collection into Postman</summary>
+
+1. **Open Postman**  
+   Launch the Postman desktop app or go to [Postman Web](https://www.postman.com/).
+
+2. **Click "Import"**  
+   In the top-left corner of Postman, click the **Import** button.
+
+3. **Choose Import Method**  
+   You can import a collection in multiple ways:
+   - **File Upload**: Select the `.json` file of your collection from your computer.
+   - **Paste Raw Text**: Copy the raw JSON and paste it into the text area.
+   - **Link (URL)**: Paste the URL of the collection.
+
+4. **Click "Import"**  
+   Once selected, click **Import** to add the collection to your workspace.
+
+5. **View Your Collection**  
+   After importing, you’ll see the collection under **Collections** in the left sidebar.  
+   Expand it to access requests and folders.
+
+</details>
 
 # API Endpoints
 ### Flight  
