@@ -110,7 +110,6 @@ Parameters for `GET /api/bookings`
 #### Requests
 <details>
 <summary>Flight Request</summary>
-```
 {
   "name": "Auckland Airport",
   "city": "Auckland",
@@ -118,12 +117,10 @@ Parameters for `GET /api/bookings`
   "iata": "AKL",
   "icao": "NZAA"
 }
-```
 </details>
 
 <details>
 <summary>Booking Request</summary>
-```
 {
   "flightId": 1,
   "firstName": "John",
@@ -131,12 +128,10 @@ Parameters for `GET /api/bookings`
   "cabinClass": "Economy",
   "seat": "2A"
 }
-```
 </details>
 
 <details>
 <summary>Booking Request</summary>
-```
 {
   "flightId": 1,
   "firstName": "John",
@@ -144,28 +139,23 @@ Parameters for `GET /api/bookings`
   "cabinClass": "Economy",
   "seat": "2A"
 }
-```
 </details>
 
 #### Error Responses
 <details>
 <summary>Conflict Response</summary>
-```
 {
   "error": "ConflictException",
   "message": "Cannot delete flight with existing bookings.",
   "timeStamp": "2025-08-06T10:00:00.0000000"
 }
-```
 </details>
 
 <details>
 <summary>NotFound Response</summary>
-```
 {
   "error": "NotFound",
   "message": "Could not find flight with id: 99",
   "timeStamp": "2025-08-06T10:00:00.0000000"
 }
-```
 </details>
