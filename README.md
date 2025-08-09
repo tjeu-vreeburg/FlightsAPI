@@ -99,6 +99,7 @@ Parameters for `GET /api/airports`
 | GET    | `/api/bookings`              | Get all bookings (supports pagination filters) |
 | GET    | `/api/bookings/details/{id}` | Get a booking by ID                            |
 | POST   | `/api/bookings/create`       | Create a new booking                           |
+| PUT    | `/api/bookings/update/{id}`  | Update a booking                               |
 | DELETE | `/api/bookings/cancel/{id}`  | Cancel a booking                               |
 
 Parameters for `GET /api/bookings`
