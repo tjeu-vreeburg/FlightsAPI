@@ -1,5 +1,6 @@
 package com.tjeuvreeburg.flightapi.entities;
 
+import com.tjeuvreeburg.flightapi.base.generics.GenericEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

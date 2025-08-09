@@ -43,5 +43,16 @@ public class AirportControllerFunctionalTest {
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.message").value("Cannot delete airport with existing flights."));
     }
+
+    @Test
+    public void searchAirportSuccess() throws Exception {
+        var endpoint = "/api/airports/search?city={city}&country={country}";
+        mockMvc.perform(get(endpoint, "Auckland", "New Zealand")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").isArray())
+                .andExpect(jsonPath("$.content[0].name").value("Auckland Airport"))
+                .andExpect(jsonPath("$.content[0].iata").value("AKL"));
+    }
 }
 

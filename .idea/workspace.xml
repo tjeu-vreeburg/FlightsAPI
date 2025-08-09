@@ -4,13 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce35f790-dcd2-42b8-8b88-8e04eab4a819" name="Changes" comment="1.0.8&#10;&#10;- Added Conflict error handling&#10;- Added Postman collection&#10;- Added functional tests&#10;- Added unit tests&#10;- Updated repositories to check for existing external entities">
+    <list default="true" id="ce35f790-dcd2-42b8-8b88-8e04eab4a819" name="Changes" comment="1.0.9&#10;Some basic house keeping&#10;&#10;- Added javadocs for generics&#10;- Formatted code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/responses/FieldErrorResponseBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/AirportSpecification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/GenericEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/GenericEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/BadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/BadRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/ConflictException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/ConflictException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/ResourceNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/GenericService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AirportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AirportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/FlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/FlightController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Airport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/GenericEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/generics/GenericEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/BadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/exceptions/BadRequestException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/ConflictException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/exceptions/ConflictException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/exceptions/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/exceptions/ResourceNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/handlers/GlobalErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/handlers/GlobalErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/responses/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/responses/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/responses/PaginatedResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/responses/PaginatedResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AirportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AirportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/FlightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/FlightService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/generics/GenericService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/FlightSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/FlightSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FlightAPI.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FlightAPI.postman_collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/functional/AirportControllerFunctionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/functional/AirportControllerFunctionalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/AirportServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/AirportServiceUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/BookingServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/BookingServiceUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/FlightServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/FlightServiceUnitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +50,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FlightsAPI" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -78,11 +103,13 @@
   "keyToString": {
     "Application.FlightApiApplication.executor": "Run",
     "Gradle.AirportControllerFunctionalTest.executor": "Run",
+    "Gradle.AirportControllerFunctionalTest.searchAirportSuccess.executor": "Run",
     "Gradle.AirportServiceTest.executor": "Run",
     "Gradle.AirportServiceTest.verifyFlightExists.executor": "Run",
     "Gradle.AirportServiceUnitTest.executor": "Run",
     "Gradle.AirportServiceUnitTest.verifyAirportCannotBeBecauseOfDestinationDeleted.executor": "Run",
     "Gradle.AirportServiceUnitTest.verifyAirportHasBeenDeleted.executor": "Run",
+    "Gradle.AirportServiceUnitTest.verifyAirportsHaveBeenFound.executor": "Run",
     "Gradle.Build FlightsAPI.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "Gradle.FlightControllerFunctionalTest.executor": "Run",
@@ -90,6 +117,7 @@
     "Gradle.FlightServiceUnitTest.verifyFlightHasBeenDeleted.executor": "Run",
     "Gradle.FlightsAPI [:com.tjeuvreeburg.flightapi.FlightApiApplication.main()].executor": "Run",
     "Gradle.FlightsAPI [assemble].executor": "Run",
+    "Gradle.FlightsAPI [bootRun].executor": "Run",
     "Gradle.FlightsAPI [build].executor": "Run",
     "Gradle.FlightsAPI [clean test].executor": "Run",
     "Gradle.FlightsAPI [clean].executor": "Run",
@@ -144,10 +172,24 @@
       <command value="gradle clean test --refresh-dependencies" />
       <command value="gradle test --info" />
       <command value="gradle test" />
+      <command value="gradle bootRun" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'FlightsAPI.test'">
-    <configuration name="AirportServiceUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.FlightsAPI [bootRun]">
+    <configuration name="FlightApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tjeuvreeburg.flightapi.FlightApiApplication" />
+      <module name="FlightsAPI.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tjeuvreeburg.flightapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AirportControllerFunctionalTest.searchAirportSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -160,7 +202,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.unit.AirportServiceUnitTest&quot;" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.functional.AirportControllerFunctionalTest.searchAirportSuccess&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -171,7 +213,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AirportServiceUnitTest.verifyAirportCannotBeBecauseOfDestinationDeleted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AirportServiceUnitTest.verifyAirportsHaveBeenFound" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -184,7 +226,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.unit.AirportServiceUnitTest.verifyAirportCannotBeBecauseOfDestinationDeleted&quot;" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.unit.AirportServiceUnitTest.verifyAirportsHaveBeenFound&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -195,52 +237,26 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AirportServiceUnitTest.verifyAirportHasBeenDeleted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="FlightsAPI [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" value="--stacktrace" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.unit.AirportServiceUnitTest.verifyAirportHasBeenDeleted&quot;" />
+            <option value="bootRun" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="FlightServiceUnitTest.verifyFlightHasBeenDeleted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.unit.FlightServiceUnitTest.verifyFlightHasBeenDeleted&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="Tests in 'FlightsAPI.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -267,11 +283,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FlightsAPI [bootRun]" />
         <item itemvalue="Gradle.Tests in 'FlightsAPI.test'" />
-        <item itemvalue="Gradle.AirportServiceUnitTest.verifyAirportCannotBeBecauseOfDestinationDeleted" />
-        <item itemvalue="Gradle.AirportServiceUnitTest.verifyAirportHasBeenDeleted" />
-        <item itemvalue="Gradle.AirportServiceUnitTest" />
-        <item itemvalue="Gradle.FlightServiceUnitTest.verifyFlightHasBeenDeleted" />
+        <item itemvalue="Gradle.AirportControllerFunctionalTest.searchAirportSuccess" />
+        <item itemvalue="Application.FlightApiApplication" />
+        <item itemvalue="Gradle.AirportServiceUnitTest.verifyAirportsHaveBeenFound" />
       </list>
     </recent_temporary>
   </component>
@@ -355,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754435903181</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1.0.9&#10;Some basic house keeping&#10;&#10;- Added javadocs for generics&#10;- Formatted code">
+      <option name="closed" value="true" />
+      <created>1754442455380</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1754442455380</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +403,8 @@
     <MESSAGE value="1.0.6&#10;&#10;- Add remaining files" />
     <MESSAGE value="1.0.7&#10;&#10;- Removed some comments&#10;- Final commit before final test" />
     <MESSAGE value="1.0.8&#10;&#10;- Added Conflict error handling&#10;- Added Postman collection&#10;- Added functional tests&#10;- Added unit tests&#10;- Updated repositories to check for existing external entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0.8&#10;&#10;- Added Conflict error handling&#10;- Added Postman collection&#10;- Added functional tests&#10;- Added unit tests&#10;- Updated repositories to check for existing external entities" />
+    <MESSAGE value="1.0.9&#10;Some basic house keeping&#10;&#10;- Added javadocs for generics&#10;- Formatted code" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.9&#10;Some basic house keeping&#10;&#10;- Added javadocs for generics&#10;- Formatted code" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FlightsAPI$FlightApiApplication.ic" NAME="FlightApiApplication Coverage Results" MODIFIED="1754283815488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

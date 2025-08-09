@@ -1,9 +1,10 @@
 package com.tjeuvreeburg.flightapi.handlers;
 
-import com.tjeuvreeburg.flightapi.exceptions.BadRequestException;
-import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
-import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
-import com.tjeuvreeburg.flightapi.responses.ErrorResponse;
+import com.tjeuvreeburg.flightapi.base.exceptions.BadRequestException;
+import com.tjeuvreeburg.flightapi.base.exceptions.ConflictException;
+import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.base.responses.ErrorResponse;
+import com.tjeuvreeburg.flightapi.base.responses.FieldErrorResponseBuilder;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
@@ -44,20 +44,15 @@ public class GlobalErrorHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
-        var errors = new HashMap<String, String>();
-        ex.getBindingResult().getFieldErrors().forEach(error ->
-                errors.put(error.getField(), error.getDefaultMessage())
-        );
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return FieldErrorResponseBuilder.newBuilder()
+                .addMethodArgumentNotValidExceptions(ex)
+                .submit(HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Map<String, String>> handleConstraintViolations(ConstraintViolationException ex) {
-        var errors = new HashMap<String, String>();
-        ex.getConstraintViolations().forEach(violation -> {
-            var field = violation.getPropertyPath().toString();
-            errors.put(field, violation.getMessage());
-        });
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return FieldErrorResponseBuilder.newBuilder()
+                .addConstrainViolationException(ex)
+                .submit(HttpStatus.BAD_REQUEST);
     }
 }

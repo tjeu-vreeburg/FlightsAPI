@@ -1,19 +1,20 @@
 package com.tjeuvreeburg.flightapi.services;
 
-import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
-import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.base.exceptions.ConflictException;
+import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.base.generics.GenericService;
 import com.tjeuvreeburg.flightapi.entities.Airport;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
 import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
+import com.tjeuvreeburg.flightapi.specifications.AirportSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class AirportService implements GenericService<Airport, Specification<Airport>> {
+public class AirportService implements GenericService<Airport, AirportSpecification> {
 
     private final AirportRepository airportRepository;
     private final FlightRepository flightRepository;
@@ -26,11 +27,11 @@ public class AirportService implements GenericService<Airport, Specification<Air
     @Override
     @Transactional
     public void delete(long id) {
-        if(flightRepository.existsByOriginId(id)) {
+        if (flightRepository.existsByOriginId(id)) {
             throw new ConflictException("delete", "airport", "flights");
         }
 
-        if(flightRepository.existsByDestinationId(id)) {
+        if (flightRepository.existsByDestinationId(id)) {
             throw new ConflictException("delete", "airport", "flights");
         }
 
@@ -65,7 +66,7 @@ public class AirportService implements GenericService<Airport, Specification<Air
     }
 
     @Override
-    public Page<Airport> findAll(Pageable pageable) {
-        return airportRepository.findAll(pageable);
+    public Page<Airport> findAll(AirportSpecification specification, Pageable pageable) {
+        return airportRepository.findAll(specification, pageable);
     }
 }

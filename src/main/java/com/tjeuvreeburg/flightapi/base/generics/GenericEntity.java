@@ -1,4 +1,4 @@
-package com.tjeuvreeburg.flightapi.entities;
+package com.tjeuvreeburg.flightapi.base.generics;
 
 /**
  * Represents a generic entity with a unique identifier.

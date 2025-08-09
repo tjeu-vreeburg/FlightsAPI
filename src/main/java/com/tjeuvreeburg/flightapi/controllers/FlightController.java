@@ -1,7 +1,7 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
 import com.tjeuvreeburg.flightapi.entities.Flight;
-import com.tjeuvreeburg.flightapi.responses.PaginatedResponse;
+import com.tjeuvreeburg.flightapi.base.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.FlightService;
 import com.tjeuvreeburg.flightapi.specifications.FlightSpecification;
 import jakarta.validation.Valid;
@@ -32,7 +32,7 @@ public class FlightController {
             @RequestParam(defaultValue = "10") int size
     ) {
         var pageable = PageRequest.of(page, size);
-        var flightSpecification = new FlightSpecification(origin, destination);
+        var flightSpecification = FlightSpecification.filter(origin, destination);
         var flightsPage = flightService.findAll(flightSpecification, pageable);
 
         return PaginatedResponse.from(flightsPage);

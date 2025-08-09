@@ -1,7 +1,8 @@
 package com.tjeuvreeburg.flightapi.services;
 
-import com.tjeuvreeburg.flightapi.exceptions.ConflictException;
-import com.tjeuvreeburg.flightapi.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.base.exceptions.ConflictException;
+import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.base.generics.GenericService;
 import com.tjeuvreeburg.flightapi.entities.Flight;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
 import com.tjeuvreeburg.flightapi.repositories.BookingRepository;

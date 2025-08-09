@@ -231,7 +231,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Airports",
+					"name": "Search Airports",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -248,7 +248,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/airports?page={{page}}&size={{size}}",
+							"raw": "localhost:8080/api/airports?city={{city}}&country={{country}}&page={{page}}&size={{size}}",
 							"host": [
 								"localhost"
 							],
@@ -258,6 +258,14 @@
 								"airports"
 							],
 							"query": [
+								{
+									"key": "city",
+									"value": "{{city}}"
+								},
+								{
+									"key": "country",
+									"value": "{{country}}"
+								},
 								{
 									"key": "page",
 									"value": "{{page}}"
@@ -385,7 +393,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Booking",
+					"name": "Get Bookings",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -513,6 +521,16 @@
 		{
 			"key": "bookingId",
 			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "city",
+			"value": "Auckland",
+			"type": "default"
+		},
+		{
+			"key": "country",
+			"value": "New Zealand",
 			"type": "default"
 		}
 	]

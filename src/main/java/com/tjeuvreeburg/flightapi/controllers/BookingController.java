@@ -1,7 +1,7 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
 import com.tjeuvreeburg.flightapi.entities.Booking;
-import com.tjeuvreeburg.flightapi.responses.PaginatedResponse;
+import com.tjeuvreeburg.flightapi.base.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.BookingService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;

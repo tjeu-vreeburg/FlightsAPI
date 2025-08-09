@@ -1,4 +1,4 @@
-package com.tjeuvreeburg.flightapi.responses;
+package com.tjeuvreeburg.flightapi.base.responses;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

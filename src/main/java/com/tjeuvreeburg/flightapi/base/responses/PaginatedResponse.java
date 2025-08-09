@@ -1,4 +1,4 @@
-package com.tjeuvreeburg.flightapi.responses;
+package com.tjeuvreeburg.flightapi.base.responses;
 
 import org.springframework.data.domain.Page;
 

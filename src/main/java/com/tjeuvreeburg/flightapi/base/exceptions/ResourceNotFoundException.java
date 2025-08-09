@@ -1,4 +1,4 @@
-package com.tjeuvreeburg.flightapi.exceptions;
+package com.tjeuvreeburg.flightapi.base.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 

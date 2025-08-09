@@ -35,4 +35,8 @@ public class FlightSpecification implements Specification<Flight> {
 
         return predicate;
     }
+
+    public static FlightSpecification filter(String originCity, String destinationCity) {
+        return new FlightSpecification(originCity, destinationCity);
+    }
 }
