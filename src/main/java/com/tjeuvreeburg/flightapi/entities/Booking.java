@@ -2,7 +2,7 @@ package com.tjeuvreeburg.flightapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tjeuvreeburg.flightapi.base.generics.GenericEntity;
+import com.tjeuvreeburg.flightapi.base.interfaces.GenericEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

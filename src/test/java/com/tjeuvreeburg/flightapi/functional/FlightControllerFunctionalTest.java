@@ -39,10 +39,10 @@ public class FlightControllerFunctionalTest {
 
     @Test
     public void cancelFlightFailure() throws Exception {
-        mockMvc.perform(delete("/api/flights/cancel/{id}", 1L)
+        mockMvc.perform(delete("/api/flights/delete/{id}", 1L)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isConflict())
-                .andExpect(jsonPath("$.message").value("Cannot cancel flight with existing bookings."));
+                .andExpect(jsonPath("$.message").value("Cannot delete flight with existing bookings."));
     }
 
     @Test

@@ -1,19 +1,18 @@
 package com.tjeuvreeburg.flightapi.services;
 
 import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
-import com.tjeuvreeburg.flightapi.base.generics.GenericService;
+import com.tjeuvreeburg.flightapi.base.interfaces.GenericService;
 import com.tjeuvreeburg.flightapi.entities.Booking;
 import com.tjeuvreeburg.flightapi.repositories.BookingRepository;
 import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class BookingService implements GenericService<Booking, Specification<Booking>> {
+public class BookingService implements GenericService<Booking> {
 
     private final BookingRepository bookingRepository;
     private final FlightRepository flightRepository;

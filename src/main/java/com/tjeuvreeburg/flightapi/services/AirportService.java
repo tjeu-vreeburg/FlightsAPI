@@ -2,7 +2,7 @@ package com.tjeuvreeburg.flightapi.services;
 
 import com.tjeuvreeburg.flightapi.base.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
-import com.tjeuvreeburg.flightapi.base.generics.GenericService;
+import com.tjeuvreeburg.flightapi.base.interfaces.GenericSpecificationService;
 import com.tjeuvreeburg.flightapi.entities.Airport;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
 import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class AirportService implements GenericService<Airport, AirportSpecification> {
+public class AirportService implements GenericSpecificationService<Airport, AirportSpecification> {
 
     private final AirportRepository airportRepository;
     private final FlightRepository flightRepository;

@@ -2,7 +2,7 @@ package com.tjeuvreeburg.flightapi.services;
 
 import com.tjeuvreeburg.flightapi.base.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
-import com.tjeuvreeburg.flightapi.base.generics.GenericService;
+import com.tjeuvreeburg.flightapi.base.interfaces.GenericSpecificationService;
 import com.tjeuvreeburg.flightapi.entities.Flight;
 import com.tjeuvreeburg.flightapi.repositories.AirportRepository;
 import com.tjeuvreeburg.flightapi.repositories.BookingRepository;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class FlightService implements GenericService<Flight, FlightSpecification> {
+public class FlightService implements GenericSpecificationService<Flight, FlightSpecification> {
 
     private final AirportRepository airportRepository;
     private final BookingRepository bookingRepository;
@@ -31,7 +31,7 @@ public class FlightService implements GenericService<Flight, FlightSpecification
     @Transactional
     public void delete(long id) {
         if (bookingRepository.existsByFlightId(id)) {
-            throw new ConflictException("cancel", "flight", "bookings");
+            throw new ConflictException("delete", "flight", "bookings");
         }
 
         flightRepository.deleteById(id);

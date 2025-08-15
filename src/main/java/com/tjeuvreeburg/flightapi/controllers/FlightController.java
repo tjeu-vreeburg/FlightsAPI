@@ -1,29 +1,24 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
+import com.tjeuvreeburg.flightapi.base.abstraction.AbstractController;
 import com.tjeuvreeburg.flightapi.entities.Flight;
 import com.tjeuvreeburg.flightapi.base.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.FlightService;
 import com.tjeuvreeburg.flightapi.specifications.FlightSpecification;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RestController
 @RequestMapping("/api/flights")
-public class FlightController {
+public class FlightController extends AbstractController<Flight> {
 
     private final FlightService flightService;
 
     public FlightController(FlightService flightService) {
+        super(flightService);
         this.flightService = flightService;
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<Flight> createFlight(@Valid @RequestBody Flight flight) {
-        return ResponseEntity.ok(flightService.save(flight));
     }
 
     @GetMapping("/search")
@@ -38,21 +33,5 @@ public class FlightController {
         var flightsPage = flightService.findAll(flightSpecification, pageable);
 
         return PaginatedResponse.from(flightsPage);
-    }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Flight> updateFlight(@Valid @RequestBody Flight flight, @PathVariable Long id) {
-        return ResponseEntity.ok(flightService.update(id, flight));
-    }
-
-    @DeleteMapping("/cancel/{id}")
-    public ResponseEntity<Boolean> cancelFlight(@PathVariable Long id) {
-        flightService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/details/{id}")
-    public ResponseEntity<Flight> getFlightDetails(@PathVariable Long id) {
-        return ResponseEntity.ok(flightService.getById(id));
     }
 }

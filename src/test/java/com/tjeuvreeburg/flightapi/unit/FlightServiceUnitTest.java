@@ -95,7 +95,7 @@ public class FlightServiceUnitTest {
         when(bookingRepository.existsByFlightId(1L)).thenReturn(true);
 
         ConflictException ex = assertThrows(ConflictException.class, () -> flightService.delete(1L));
-        assertTrue(ex.getMessage().contains("Cannot cancel flight with existing bookings."));
+        assertTrue(ex.getMessage().contains("Cannot delete flight with existing bookings."));
 
         verify(flightRepository, times(0)).deleteById(1L);
     }

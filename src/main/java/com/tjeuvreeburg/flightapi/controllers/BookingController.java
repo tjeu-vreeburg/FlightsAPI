@@ -1,28 +1,23 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
+import com.tjeuvreeburg.flightapi.base.abstraction.AbstractController;
 import com.tjeuvreeburg.flightapi.entities.Booking;
 import com.tjeuvreeburg.flightapi.base.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.BookingService;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RestController
 @RequestMapping("/api/bookings")
-public class BookingController {
+public class BookingController extends AbstractController<Booking> {
 
     private final BookingService bookingService;
 
     public BookingController(BookingService bookingService) {
+        super(bookingService);
         this.bookingService = bookingService;
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<Booking> createBooking(@Valid @RequestBody Booking booking) {
-        return ResponseEntity.ok(bookingService.save(booking));
     }
 
     @GetMapping
@@ -33,21 +28,5 @@ public class BookingController {
         var pageable = PageRequest.of(page, size);
         var bookingPage = bookingService.findAll(pageable);
         return PaginatedResponse.from(bookingPage);
-    }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Booking> updateBooking(@Valid @RequestBody Booking booking, @PathVariable Long id) {
-        return ResponseEntity.ok(bookingService.update(id, booking));
-    }
-
-    @DeleteMapping("/cancel/{id}")
-    public ResponseEntity<Boolean> cancelBooking(@PathVariable Long id) {
-        bookingService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/details/{id}")
-    public ResponseEntity<Booking> getBookingDetails(@PathVariable Long id) {
-        return ResponseEntity.ok(bookingService.getById(id));
     }
 }

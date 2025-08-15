@@ -1,16 +1,14 @@
-package com.tjeuvreeburg.flightapi.base.generics;
+package com.tjeuvreeburg.flightapi.base.interfaces;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 
 /**
  * Generic service interface that defines common CRUD operations for entities.
  *
  * @param <T> The type of the entity, extending {@link GenericEntity}.
- * @param <K> The type of the specification used for filtering, extending {@link Specification}.
  */
-public interface GenericService<T extends GenericEntity, K extends Specification<T>> {
+public interface GenericService<T extends GenericEntity> {
 
     /**
      * Deletes an entity by its unique identifier.
@@ -45,21 +43,6 @@ public interface GenericService<T extends GenericEntity, K extends Specification
      * @throws IllegalArgumentException if the entity with the given ID does not exist.
      */
     T update(long id, T t);
-
-    /**
-     * Retrieves all entities matching a given specification with pagination.
-     *
-     * <p><b>Default implementation:</b> Throws {@link UnsupportedOperationException}
-     * unless overridden by the implementing service.</p>
-     *
-     * @param specification The filtering specification for the query.
-     * @param pageable      The pagination information.
-     * @return A paginated list of entities matching the specification.
-     * @throws UnsupportedOperationException if the method is not implemented.
-     */
-    default Page<T> findAll(K specification, Pageable pageable) {
-        throw new UnsupportedOperationException("Finding records via specifications is not supported");
-    }
 
     /**
      * Retrieves all entities with pagination, without applying any specifications.
