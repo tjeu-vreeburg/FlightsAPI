@@ -6,9 +6,10 @@ import com.tjeuvreeburg.flightapi.services.BookingService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-
+@Validated
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
@@ -35,7 +36,7 @@ public class BookingController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking, @PathVariable Long id) {
+    public ResponseEntity<Booking> updateBooking(@Valid @RequestBody Booking booking, @PathVariable Long id) {
         return ResponseEntity.ok(bookingService.update(id, booking));
     }
 

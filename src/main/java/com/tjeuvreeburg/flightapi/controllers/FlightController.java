@@ -7,8 +7,10 @@ import com.tjeuvreeburg.flightapi.specifications.FlightSpecification;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Validated
 @RestController
 @RequestMapping("/api/flights")
 public class FlightController {
@@ -39,7 +41,7 @@ public class FlightController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Flight> updateFlight(@RequestBody Flight flight, @PathVariable Long id) {
+    public ResponseEntity<Flight> updateFlight(@Valid @RequestBody Flight flight, @PathVariable Long id) {
         return ResponseEntity.ok(flightService.update(id, flight));
     }
 

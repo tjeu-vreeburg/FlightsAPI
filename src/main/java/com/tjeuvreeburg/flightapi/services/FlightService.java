@@ -57,7 +57,7 @@ public class FlightService implements GenericService<Flight, FlightSpecification
         var destinationId = flight.getDestinationId();
         if (destinationId != null) {
             var destination = airportRepository.findById(destinationId)
-                    .orElseThrow(() -> ResourceNotFoundException.of("desination airport", destinationId));
+                    .orElseThrow(() -> ResourceNotFoundException.of("destination airport", destinationId));
 
             flight.setDestination(destination);
         }
@@ -66,6 +66,7 @@ public class FlightService implements GenericService<Flight, FlightSpecification
     }
 
     @Override
+    @Transactional
     public Flight update(long id, Flight newFlight) {
         return flightRepository.findById(id)
                 .map(flight -> {

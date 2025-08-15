@@ -52,6 +52,7 @@ public class AirportService implements GenericService<Airport, AirportSpecificat
     }
 
     @Override
+    @Transactional
     public Airport update(long id, Airport newAirport) {
         return airportRepository.findById(id)
                 .map(airport -> {

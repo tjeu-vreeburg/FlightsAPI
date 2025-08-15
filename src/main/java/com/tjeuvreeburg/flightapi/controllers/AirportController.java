@@ -7,8 +7,10 @@ import com.tjeuvreeburg.flightapi.specifications.AirportSpecification;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Validated
 @RestController
 @RequestMapping("/api/airports")
 public class AirportController {
@@ -38,7 +40,7 @@ public class AirportController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Airport> updateAirport(@RequestBody Airport airport, @PathVariable Long id) {
+    public ResponseEntity<Airport> updateAirport(@Valid @RequestBody Airport airport, @PathVariable Long id) {
         return ResponseEntity.ok(airportService.update(id, airport));
     }
 

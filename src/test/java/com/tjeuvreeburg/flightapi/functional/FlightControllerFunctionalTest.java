@@ -44,5 +44,15 @@ public class FlightControllerFunctionalTest {
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.message").value("Cannot cancel flight with existing bookings."));
     }
+
+    @Test
+    public void searchFlightsSuccess() throws Exception {
+        var endpoint = "/api/flights/search?origin={city}&destination={country}";
+        mockMvc.perform(get(endpoint, "Auckland", "Melbourne")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").isArray())
+                .andExpect(jsonPath("$.content[0].number").value(10));
+    }
 }
 

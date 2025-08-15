@@ -49,6 +49,7 @@ public class BookingService implements GenericService<Booking, Specification<Boo
     }
 
     @Override
+    @Transactional
     public Booking update(long id, Booking newBooking) {
         return bookingRepository.findById(id)
                 .map(booking -> {
