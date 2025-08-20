@@ -72,7 +72,7 @@ Import the premade collection in postman for api testing:
 | GET    | `/api/flights/details/{id}` | Get a flight by ID                             |
 | POST   | `/api/flights/create/`      | Create a new flight                            |
 | PUT    | `/api/flights/update/{id}`  | Update an existing flight                      |
-| DELETE | `/api/flights/cancel/{id}`  | Cancel a flight by ID                          |
+| DELETE | `/api/flights/delete/{id}`  | Delete a flight by ID                          |
 
 Parameters for `GET /api/flights/search`
 - `page`: The page number
@@ -100,7 +100,7 @@ Parameters for `GET /api/airports`
 | GET    | `/api/bookings/details/{id}` | Get a booking by ID                            |
 | POST   | `/api/bookings/create`       | Create a new booking                           |
 | PUT    | `/api/bookings/update/{id}`  | Update a booking                               |
-| DELETE | `/api/bookings/cancel/{id}`  | Cancel a booking                               |
+| DELETE | `/api/bookings/delete/{id}`  | Delete a booking                               |
 
 Parameters for `GET /api/bookings`
 - `page`: The page number
