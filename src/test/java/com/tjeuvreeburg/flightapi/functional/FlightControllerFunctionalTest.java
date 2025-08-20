@@ -25,8 +25,8 @@ public class FlightControllerFunctionalTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.originId").value(1L))
-                .andExpect(jsonPath("$.destinationId").value(2L));
+                .andExpect(jsonPath("$.origin.id").value(1L))
+                .andExpect(jsonPath("$.destination.id").value(2L));
     }
 
     @Test
@@ -55,4 +55,3 @@ public class FlightControllerFunctionalTest {
                 .andExpect(jsonPath("$.content[0].number").value(10));
     }
 }
-

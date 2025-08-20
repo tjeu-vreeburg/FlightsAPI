@@ -1,6 +1,6 @@
 package com.tjeuvreeburg.flightapi.repositories;
 
-import com.tjeuvreeburg.flightapi.entities.Booking;
+import com.tjeuvreeburg.flightapi.models.entities.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

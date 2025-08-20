@@ -1,7 +1,7 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
 import com.tjeuvreeburg.flightapi.base.abstraction.AbstractController;
-import com.tjeuvreeburg.flightapi.entities.Flight;
+import com.tjeuvreeburg.flightapi.models.dto.FlightDto;
 import com.tjeuvreeburg.flightapi.base.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.FlightService;
 import com.tjeuvreeburg.flightapi.specifications.FlightSpecification;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RestController
 @RequestMapping("/api/flights")
-public class FlightController extends AbstractController<Flight> {
+public class FlightController extends AbstractController<FlightDto> {
 
     private final FlightService flightService;
 
@@ -22,7 +22,7 @@ public class FlightController extends AbstractController<Flight> {
     }
 
     @GetMapping("/search")
-    public PaginatedResponse<Flight> searchFlights(
+    public PaginatedResponse<FlightDto> searchFlights(
             @RequestParam(required = false) String origin,
             @RequestParam(required = false) String destination,
             @RequestParam(defaultValue = "0") int page,

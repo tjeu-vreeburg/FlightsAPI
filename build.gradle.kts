@@ -9,7 +9,7 @@ springBoot {
 }
 
 group = "com.tjeuvreeburg.flightapi"
-version = "1.0.11-SNAPSHOT"
+version = "1.0.12-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 java {

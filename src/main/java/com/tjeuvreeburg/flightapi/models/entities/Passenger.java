@@ -1,10 +1,9 @@
-package com.tjeuvreeburg.flightapi.entities;
+package com.tjeuvreeburg.flightapi.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -16,7 +15,6 @@ public class Passenger implements GenericEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Address is required")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore
@@ -26,6 +24,30 @@ public class Passenger implements GenericEntity {
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @JsonProperty("addressId")
+    public Long getAddressId() {
+        return address != null ? address.getId() : null;
+    }
+
+    @JsonProperty("addressId")
+    public void setAddressId(Long addressId) {
+        if (addressId != null) {
+            Address address = new Address();
+            address.setId(addressId);
+            this.address = address;
+        } else {
+            this.address = null;
+        }
+    }
 
     public String getFirstName() {
         return firstName;
@@ -57,11 +79,6 @@ public class Passenger implements GenericEntity {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    @JsonProperty("addressId")
-    public Long getAddressId() {
-        return address != null ? address.getId() : null;
     }
 
     @Override

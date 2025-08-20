@@ -4,34 +4,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce35f790-dcd2-42b8-8b88-8e04eab4a819" name="Changes" comment="1.0.11-SNAPSHOT&#10;&#10;- Added functional test for searching flights&#10;- Added missing annotations&#10;- Minor fixes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/abstraction/AbstractController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericSpecificationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AddressController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/PassengerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Passenger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/PassengerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/PassengerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/AddressSpecification.java" afterDir="false" />
+    <list default="true" id="ce35f790-dcd2-42b8-8b88-8e04eab4a819" name="Changes" comment="1.0.13-SNAPSHOT&#10;This update changed a lot to support DTO, while trying to develop a frontend, &#10;I realised that my api's did not support the correct responses&#10;&#10;- Added Abstract Mapper&#10;- Added DTO classes&#10;- Added Better interaction between all data types&#10;- Added GenericDto&#10;- Added Web Configuration&#10;- Refactored code to support DTO">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/abstraction/AbstractMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/configuration/WebConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/dto/AddressDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/dto/AirportDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/dto/BookingDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/dto/FlightDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/dto/PassengerDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/mappers/AddressMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/mappers/AirportMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/mappers/BookingMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/mappers/FlightMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/mappers/PassengerMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/generics/GenericEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/generics/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/abstraction/AbstractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/abstraction/AbstractController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericSpecificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/base/interfaces/GenericSpecificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AddressController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AirportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/AirportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/BookingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/FlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/FlightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Airport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/controllers/PassengerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/entities/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/entities/Airport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/entities/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/entities/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/entities/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/models/entities/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/AddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/AirportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/AirportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/BookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/FlightRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/FlightRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/PassengerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/repositories/PassengerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AddressService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AirportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/AirportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/FlightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/FlightService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/PassengerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/services/PassengerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/AddressSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/AddressSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/AirportSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/AirportSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/FlightSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tjeuvreeburg/flightapi/specifications/FlightSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/functional/BookingControllerFunctionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/functional/BookingControllerFunctionalTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/functional/FlightControllerFunctionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/functional/FlightControllerFunctionalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/AirportServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/AirportServiceUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/BookingServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/BookingServiceUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/FlightServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/unit/FlightServiceUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/utilities/DataHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/tjeuvreeburg/flightapi/utilities/DataHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +127,7 @@
   "keyToString": {
     "Application.FlightApiApplication.executor": "Run",
     "Gradle.AirportControllerFunctionalTest.executor": "Run",
+    "Gradle.AirportControllerFunctionalTest.getAirportSuccess.executor": "Run",
     "Gradle.AirportControllerFunctionalTest.searchAirportSuccess.executor": "Run",
     "Gradle.AirportServiceTest.executor": "Run",
     "Gradle.AirportServiceTest.verifyFlightExists.executor": "Run",
@@ -111,10 +135,16 @@
     "Gradle.AirportServiceUnitTest.verifyAirportCannotBeBecauseOfDestinationDeleted.executor": "Run",
     "Gradle.AirportServiceUnitTest.verifyAirportHasBeenDeleted.executor": "Run",
     "Gradle.AirportServiceUnitTest.verifyAirportsHaveBeenFound.executor": "Run",
+    "Gradle.BookingControllerFunctionalTest.executor": "Run",
+    "Gradle.BookingServiceUnitTest.executor": "Run",
+    "Gradle.BookingServiceUnitTest.verifyBookingExists.executor": "Run",
+    "Gradle.BookingServiceUnitTest.verifyBookingSaved.executor": "Run",
+    "Gradle.BookingServiceUnitTest.verifyBookingUpdated.executor": "Run",
     "Gradle.Build FlightsAPI.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "Gradle.FlightControllerFunctionalTest.executor": "Run",
     "Gradle.FlightControllerFunctionalTest.searchFlightsSuccess.executor": "Run",
+    "Gradle.FlightServiceUnitTest.executor": "Run",
     "Gradle.FlightServiceUnitTest.verifyFlightExists.executor": "Run",
     "Gradle.FlightServiceUnitTest.verifyFlightHasBeenDeleted.executor": "Run",
     "Gradle.FlightsAPI [:com.tjeuvreeburg.flightapi.FlightApiApplication.main()].executor": "Run",
@@ -127,6 +157,7 @@
     "Gradle.FlightsAPI [test].executor": "Run",
     "Gradle.Tests in 'FlightsAPI.test'.executor": "Run",
     "Gradle.Tests in 'com.tjeuvreeburg.flightapi.functional'.executor": "Run",
+    "Gradle.Tests in 'com.tjeuvreeburg.flightapi.unit'.executor": "Run",
     "JUnit.AirportControllerFunctionalTest.executor": "Run",
     "JUnit.AirportControllerFunctionalTest.getAirportFailure.executor": "Run",
     "JUnit.AirportControllerFunctionalTest.getFlightSuccess.executor": "Run",
@@ -178,8 +209,8 @@
       <command value="gradle bootRun" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'FlightsAPI.test'">
-    <configuration name="AirportControllerFunctionalTest.searchAirportSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.FlightServiceUnitTest">
+    <configuration name="AirportServiceUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -192,7 +223,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.functional.AirportControllerFunctionalTest.searchAirportSuccess&quot;" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.unit.AirportServiceUnitTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -203,7 +234,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="FlightControllerFunctionalTest.searchFlightsSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BookingServiceUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -216,7 +247,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.functional.FlightControllerFunctionalTest.searchFlightsSuccess&quot;" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.unit.BookingServiceUnitTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -227,51 +258,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="FlightsAPI [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--stacktrace" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in 'FlightsAPI.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in 'com.tjeuvreeburg.flightapi.functional'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BookingServiceUnitTest.verifyBookingSaved" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -284,7 +271,55 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.tjeuvreeburg.flightapi.functional.*&quot;" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.unit.BookingServiceUnitTest.verifyBookingSaved&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="BookingServiceUnitTest.verifyBookingUpdated" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.unit.BookingServiceUnitTest.verifyBookingUpdated&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="FlightServiceUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.tjeuvreeburg.flightapi.unit.FlightServiceUnitTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -297,11 +332,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Tests in 'FlightsAPI.test'" />
-        <item itemvalue="Gradle.Tests in 'com.tjeuvreeburg.flightapi.functional'" />
-        <item itemvalue="Gradle.FlightControllerFunctionalTest.searchFlightsSuccess" />
-        <item itemvalue="Gradle.FlightsAPI [bootRun]" />
-        <item itemvalue="Gradle.AirportControllerFunctionalTest.searchAirportSuccess" />
+        <item itemvalue="Gradle.FlightServiceUnitTest" />
+        <item itemvalue="Gradle.AirportServiceUnitTest" />
+        <item itemvalue="Gradle.BookingServiceUnitTest" />
+        <item itemvalue="Gradle.BookingServiceUnitTest.verifyBookingSaved" />
+        <item itemvalue="Gradle.BookingServiceUnitTest.verifyBookingUpdated" />
       </list>
     </recent_temporary>
   </component>
@@ -409,7 +444,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755239320636</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="1.0.12-SNAPSHOT&#10;&#10;- Added AbstractController abstract class&#10;- Added GenericController interface&#10;- Added GenericSpecificationService and reworked GenericService&#10;- Added passenger and address capabilities&#10;- Improved controllers and services to utilize new interface/abstract class&#10;&#10;Future updates:&#10;- Unit and functions tests for: Address, Passenger&#10;- Better interaction between addresses, passengers and bookings">
+      <option name="closed" value="true" />
+      <created>1755243947917</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1755243947917</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -436,7 +479,9 @@
     <MESSAGE value="1.0.9&#10;Some basic house keeping&#10;&#10;- Added javadocs for generics&#10;- Formatted code" />
     <MESSAGE value="1.0.10&#10;&#10;- Improved error handling&#10;- Restructured some codes&#10;- Added search for airports&#10;- Added more functional tests&#10;- Minor code improvements" />
     <MESSAGE value="1.0.11-SNAPSHOT&#10;&#10;- Added functional test for searching flights&#10;- Added missing annotations&#10;- Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0.11-SNAPSHOT&#10;&#10;- Added functional test for searching flights&#10;- Added missing annotations&#10;- Minor fixes" />
+    <MESSAGE value="1.0.12-SNAPSHOT&#10;&#10;- Added AbstractController abstract class&#10;- Added GenericController interface&#10;- Added GenericSpecificationService and reworked GenericService&#10;- Added passenger and address capabilities&#10;- Improved controllers and services to utilize new interface/abstract class&#10;&#10;Future updates:&#10;- Unit and functions tests for: Address, Passenger&#10;- Better interaction between addresses, passengers and bookings" />
+    <MESSAGE value="1.0.13-SNAPSHOT&#10;This update changed a lot to support DTO, while trying to develop a frontend, &#10;I realised that my api's did not support the correct responses&#10;&#10;- Added Abstract Mapper&#10;- Added DTO classes&#10;- Added Better interaction between all data types&#10;- Added GenericDto&#10;- Added Web Configuration&#10;- Refactored code to support DTO" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.13-SNAPSHOT&#10;This update changed a lot to support DTO, while trying to develop a frontend, &#10;I realised that my api's did not support the correct responses&#10;&#10;- Added Abstract Mapper&#10;- Added DTO classes&#10;- Added Better interaction between all data types&#10;- Added GenericDto&#10;- Added Web Configuration&#10;- Refactored code to support DTO" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FlightsAPI$FlightApiApplication.ic" NAME="FlightApiApplication Coverage Results" MODIFIED="1754283815488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

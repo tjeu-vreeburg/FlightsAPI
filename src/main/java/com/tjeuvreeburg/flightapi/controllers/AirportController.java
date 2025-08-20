@@ -1,7 +1,7 @@
 package com.tjeuvreeburg.flightapi.controllers;
 
 import com.tjeuvreeburg.flightapi.base.abstraction.AbstractController;
-import com.tjeuvreeburg.flightapi.entities.Airport;
+import com.tjeuvreeburg.flightapi.models.dto.AirportDto;
 import com.tjeuvreeburg.flightapi.base.responses.PaginatedResponse;
 import com.tjeuvreeburg.flightapi.services.AirportService;
 import com.tjeuvreeburg.flightapi.specifications.AirportSpecification;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RestController
 @RequestMapping("/api/airports")
-public class AirportController extends AbstractController<Airport> {
+public class AirportController extends AbstractController<AirportDto> {
 
     private final AirportService airportService;
 
@@ -22,7 +22,7 @@ public class AirportController extends AbstractController<Airport> {
     }
 
     @GetMapping("/search")
-    public PaginatedResponse<Airport> searchAirports(
+    public PaginatedResponse<AirportDto> searchAirports(
             @RequestParam(required = false) String city,
             @RequestParam(required = false) String country,
             @RequestParam(defaultValue = "0") int page,

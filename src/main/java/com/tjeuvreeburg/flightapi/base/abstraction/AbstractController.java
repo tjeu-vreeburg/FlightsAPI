@@ -1,6 +1,7 @@
 package com.tjeuvreeburg.flightapi.base.abstraction;
 
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericController;
+import com.tjeuvreeburg.flightapi.base.interfaces.GenericDto;
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericEntity;
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericService;
 import jakarta.validation.Valid;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  *
  * @param <T> the type of entity managed by this controller
  */
-public abstract class AbstractController<T extends GenericEntity> implements GenericController<T> {
+public abstract class AbstractController<T extends GenericDto> implements GenericController<T> {
 
     /**
      * The generic service that handles business logic for the entity.

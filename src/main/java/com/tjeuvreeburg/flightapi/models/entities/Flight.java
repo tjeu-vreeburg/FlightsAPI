@@ -1,10 +1,9 @@
-package com.tjeuvreeburg.flightapi.entities;
+package com.tjeuvreeburg.flightapi.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "flights")
@@ -14,17 +13,14 @@ public class Flight implements GenericEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Flight number is required")
     @Column(nullable = false)
     private Integer number;
 
-    @NotNull(message = "Origin airport id is required")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "origin_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore
     private Airport origin;
 
-    @NotNull(message = "Destination airport id is required")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "destination_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore
@@ -104,15 +100,5 @@ public class Flight implements GenericEntity {
 
     public void setDestination(Airport destination) {
         this.destination = destination;
-    }
-
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", number=" + number +
-                ", origin=" + origin +
-                ", destination=" + destination +
-                '}';
     }
 }

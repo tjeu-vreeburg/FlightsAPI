@@ -1,11 +1,9 @@
-package com.tjeuvreeburg.flightapi.entities;
+package com.tjeuvreeburg.flightapi.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "bookings")
@@ -17,23 +15,17 @@ public class Booking implements GenericEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "flight_id", referencedColumnName = "id", nullable = false)
-    @NotNull(message = "Flight is required")
     @JsonIgnore
     private Flight flight;
 
-    @NotBlank(message = "First name is required")
-    @Column(nullable = false)
-    private String firstName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "passenger_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
+    private Passenger passenger;
 
-    @NotBlank(message = "Last name is required")
-    @Column(nullable = false)
-    private String lastName;
-
-    @NotBlank(message = "Cabin class is required")
     @Column(nullable = false)
     private String cabinClass;
 
-    @NotBlank(message = "Seat is required")
     @Column(nullable = false)
     private String seat;
 
@@ -42,10 +34,9 @@ public class Booking implements GenericEntity {
 
     }
 
-    public Booking(Flight flight, String firstName, String lastName, String cabinClass, String seat) {
+    public Booking(Flight flight, Passenger passenger, String cabinClass, String seat) {
         this.flight = flight;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.passenger = passenger;
         this.cabinClass = cabinClass;
         this.seat = seat;
     }
@@ -80,24 +71,32 @@ public class Booking implements GenericEntity {
         }
     }
 
+    @JsonProperty("passengerId")
+    public Long getPassengerId() {
+        return passenger != null ? passenger.getId() : null;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    @JsonProperty("passengerId")
+    public void setPassengerId(Long passengerId) {
+        if (passengerId != null) {
+            Passenger passenger = new Passenger();
+            passenger.setId(passengerId);
+            this.passenger = passenger;
+        } else {
+            this.passenger = null;
+        }
+    }
+
     public void setFlight(Flight flight) {
         this.flight = flight;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 
     public String getCabinClass() {
@@ -114,17 +113,5 @@ public class Booking implements GenericEntity {
 
     public void setSeat(String seat) {
         this.seat = seat;
-    }
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "id=" + id +
-                ", flight=" + flight +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", cabinClass='" + cabinClass + '\'' +
-                ", seat='" + seat + '\'' +
-                '}';
     }
 }

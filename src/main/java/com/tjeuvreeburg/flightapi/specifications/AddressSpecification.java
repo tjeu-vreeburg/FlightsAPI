@@ -1,6 +1,6 @@
 package com.tjeuvreeburg.flightapi.specifications;
 
-import com.tjeuvreeburg.flightapi.entities.Address;
+import com.tjeuvreeburg.flightapi.models.entities.Address;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

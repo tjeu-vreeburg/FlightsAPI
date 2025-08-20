@@ -1,6 +1,6 @@
 package com.tjeuvreeburg.flightapi.specifications;
 
-import com.tjeuvreeburg.flightapi.entities.Airport;
+import com.tjeuvreeburg.flightapi.models.entities.Airport;
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.NonNull;

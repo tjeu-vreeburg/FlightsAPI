@@ -2,25 +2,23 @@ package com.tjeuvreeburg.flightapi.base.interfaces;
 
 /**
  * Represents a generic entity with a unique identifier.
- *
- * <p>This interface provides a standard contract for entities to expose
- * their primary key (ID) and allows setting or retrieving it.
- * It is typically used for generic service or repository layers where
- * operations need to work with entities in a type-safe manner.</p>
+ * <p>
+ * Implementing classes are expected to provide access to their unique ID, which
+ * can be used for persistence, equality checks, and other entity-related operations.
  */
 public interface GenericEntity {
 
     /**
-     * Retrieves the unique identifier of the entity.
+     * Returns the unique identifier of the entity.
      *
-     * @return The ID of the entity.
+     * @return the ID of the entity, may be {@code null} if the entity is not yet persisted
      */
     Long getId();
 
     /**
      * Sets the unique identifier of the entity.
      *
-     * @param id The ID to assign to the entity.
+     * @param id the ID to assign to the entity
      */
     void setId(Long id);
 }

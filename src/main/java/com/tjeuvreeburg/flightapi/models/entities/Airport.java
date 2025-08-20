@@ -1,9 +1,8 @@
-package com.tjeuvreeburg.flightapi.entities;
+package com.tjeuvreeburg.flightapi.models.entities;
 
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericEntity;
+import com.tjeuvreeburg.flightapi.models.dto.AirportDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "airports")
@@ -13,30 +12,32 @@ public class Airport implements GenericEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
-    @NotBlank(message = "City is required")
     @Column(nullable = false)
     private String city;
 
-    @NotBlank(message = "Country is required")
     @Column(nullable = false)
     private String country;
 
-    @NotBlank(message = "IATA Code is required")
-    @Size(min = 3, max = 3, message = "IATA must be exactly 3 characters")
     @Column(nullable = false, length = 3)
     private String iata;
 
-    @NotBlank(message = "ICAO Code is required")
-    @Size(min = 4, max = 4, message = "ICAO must be exactly 4 characters")
     @Column(nullable = false, length = 4)
     private String icao;
 
     public Airport() {
 
+    }
+
+    public Airport(AirportDto airportDto) {
+        this.id = airportDto.id();
+        this.name = airportDto.name();
+        this.city = airportDto.city();
+        this.country = airportDto.country();
+        this.iata = airportDto.iata();
+        this.icao = airportDto.icao();
     }
 
     public Airport(String name, String city, String country, String iata, String icao) {
@@ -95,16 +96,5 @@ public class Airport implements GenericEntity {
 
     public void setIcao(String icao) {
         this.icao = icao;
-    }
-
-    @Override
-    public String toString() {
-        return "Airport{" +
-                "id=" + id +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", iata='" + iata + '\'' +
-                ", icao='" + icao + '\'' +
-                '}';
     }
 }

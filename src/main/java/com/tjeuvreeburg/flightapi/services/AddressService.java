@@ -2,56 +2,70 @@ package com.tjeuvreeburg.flightapi.services;
 
 import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
 import com.tjeuvreeburg.flightapi.base.interfaces.GenericSpecificationService;
-import com.tjeuvreeburg.flightapi.entities.Address;
+import com.tjeuvreeburg.flightapi.models.dto.AddressDto;
+import com.tjeuvreeburg.flightapi.models.entities.Address;
+import com.tjeuvreeburg.flightapi.models.mappers.AddressMapper;
 import com.tjeuvreeburg.flightapi.repositories.AddressRepository;
-import com.tjeuvreeburg.flightapi.specifications.AddressSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class AddressService implements GenericSpecificationService<Address, AddressSpecification> {
+public class AddressService implements GenericSpecificationService<Address, AddressDto> {
 
     private final AddressRepository addressRepository;
+    private final AddressMapper addressMapper;
 
-    public AddressService(AddressRepository addressRepository) {
+    public AddressService(
+            AddressRepository addressRepository,
+            AddressMapper addressMapper
+    ) {
         this.addressRepository = addressRepository;
+        this.addressMapper = addressMapper;
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         addressRepository.deleteById(id);
     }
 
     @Override
-    public Address getById(long id) {
+    public AddressDto getById(long id) {
         return addressRepository.findById(id)
+                .map(addressMapper::toDto)
                 .orElseThrow(() -> ResourceNotFoundException.of("address", id));
     }
 
     @Override
-    public Address save(Address address) {
-        return addressRepository.saveAndFlush(address);
+    @Transactional
+    public AddressDto save(AddressDto addressDto) {
+        var address = addressMapper.toEntity(addressDto);
+        var save = addressRepository.saveAndFlush(address);
+        return addressMapper.toDto(save);
     }
 
     @Override
-    public Address update(long id, Address newAddress) {
+    @Transactional
+    public AddressDto update(long id, AddressDto addressDto) {
         return addressRepository.findById(id)
                 .map(address -> {
-                    address.setStreet(newAddress.getStreet());
-                    address.setCity(newAddress.getCity());
-                    address.setCountry(newAddress.getCountry());
-                    address.setPostalCode(newAddress.getPostalCode());
+                    address.setStreet(addressDto.street());
+                    address.setCity(addressDto.city());
+                    address.setCountry(addressDto.country());
+                    address.setPostalCode(addressDto.postalCode());
 
-                    return addressRepository.saveAndFlush(address);
+                    Address savedAddress = addressRepository.saveAndFlush(address);
+                    return addressMapper.toDto(savedAddress);
                 })
                 .orElseThrow(() -> ResourceNotFoundException.of("address", id));
     }
 
     @Override
-    public Page<Address> findAll(AddressSpecification specification, Pageable pageable) {
-        return addressRepository.findAll(specification, pageable);
+    public Page<AddressDto> findAll(Specification<Address> specification, Pageable pageable) {
+        return addressRepository.findAll(specification, pageable).map(addressMapper::toDto);
     }
 }

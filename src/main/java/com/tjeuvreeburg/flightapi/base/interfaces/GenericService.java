@@ -4,57 +4,58 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * Generic service interface that defines common CRUD operations for entities.
+ * Generic service interface defining common CRUD operations for entities.
  *
- * @param <T> The type of the entity, extending {@link GenericEntity}.
+ * @param <D> the type of entity managed by this service, typically a DTO or entity class
  */
-public interface GenericService<T extends GenericEntity> {
+public interface GenericService<D> {
 
     /**
      * Deletes an entity by its unique identifier.
      *
-     * @param id The unique identifier of the entity to delete.
+     * @param id the unique identifier of the entity to delete
+     * @throws IllegalArgumentException if no entity exists with the given ID
      */
     void delete(long id);
 
     /**
      * Retrieves an entity by its unique identifier.
      *
-     * @param id The unique identifier of the entity.
-     * @return The entity corresponding to the given identifier.
-     * @throws IllegalArgumentException if no entity is found for the given id.
+     * @param id the unique identifier of the entity
+     * @return the entity corresponding to the given identifier
+     * @throws IllegalArgumentException if no entity exists with the given ID
      */
-    T getById(long id);
+    D getById(long id);
 
     /**
      * Persists a new entity.
      *
-     * @param t The entity to save.
-     * @return The saved entity, including any auto-generated fields such as ID.
+     * @param t the entity to save; must not be {@code null}
+     * @return the saved entity, including any auto-generated fields such as ID
      */
-    T save(T t);
+    D save(D t);
 
     /**
-     * Updates an existing entity with new values.
+     * Updates an existing entity identified by its unique ID.
      *
-     * @param id The unique identifier of the entity to update.
-     * @param t  The entity data to update.
-     * @return The updated entity.
-     * @throws IllegalArgumentException if the entity with the given ID does not exist.
+     * @param id the ID of the entity to update
+     * @param t  the entity data to apply
+     * @return the updated entity
+     * @throws IllegalArgumentException if no entity exists with the given ID
      */
-    T update(long id, T t);
+    D update(long id, D t);
 
     /**
-     * Retrieves all entities with pagination, without applying any specifications.
+     * Retrieves all entities with pagination.
+     * <p>
+     * The default implementation throws {@link UnsupportedOperationException} and
+     * should be overridden if a paginated listing without additional filtering is required.
      *
-     * <p><b>Default implementation:</b> Throws {@link UnsupportedOperationException}
-     * unless overridden by the implementing service.</p>
-     *
-     * @param pageable The pagination information.
-     * @return A paginated list of all entities.
-     * @throws UnsupportedOperationException if the method is not implemented.
+     * @param pageable the pagination information
+     * @return a paginated list of all entities
+     * @throws UnsupportedOperationException if the method is not implemented
      */
-    default Page<T> findAll(Pageable pageable) {
+    default Page<D> findAll(Pageable pageable) {
         throw new UnsupportedOperationException("Finding records without specifications is not supported");
     }
 }

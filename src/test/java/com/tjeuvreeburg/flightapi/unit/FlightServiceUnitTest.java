@@ -1,9 +1,11 @@
 package com.tjeuvreeburg.flightapi.unit;
 
-import com.tjeuvreeburg.flightapi.entities.Airport;
-import com.tjeuvreeburg.flightapi.entities.Flight;
 import com.tjeuvreeburg.flightapi.base.exceptions.ConflictException;
 import com.tjeuvreeburg.flightapi.base.exceptions.ResourceNotFoundException;
+import com.tjeuvreeburg.flightapi.models.dto.AirportDto;
+import com.tjeuvreeburg.flightapi.models.dto.FlightDto;
+import com.tjeuvreeburg.flightapi.models.entities.Airport;
+import com.tjeuvreeburg.flightapi.models.entities.Flight;
 import com.tjeuvreeburg.flightapi.repositories.BookingRepository;
 import com.tjeuvreeburg.flightapi.repositories.FlightRepository;
 import com.tjeuvreeburg.flightapi.services.FlightService;
@@ -12,7 +14,6 @@ import com.tjeuvreeburg.flightapi.utilities.DataHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,12 +24,10 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class FlightServiceUnitTest {
+class FlightServiceUnitTest {
 
     @Mock
     private BookingRepository bookingRepository;
@@ -42,12 +41,20 @@ public class FlightServiceUnitTest {
     private Airport origin;
     private Airport destination;
     private Flight flight;
+    private FlightDto flightDto;
+
+    private AirportDto originDto;
+    private AirportDto destinationDto;
 
     @BeforeEach
     public void setupData() {
-        origin = DataHelper.createAirport(1L);
-        destination = DataHelper.createAirport(2L);
-        flight = DataHelper.createFlight(1L, origin, destination);
+        originDto = DataHelper.createAirportDto(1L);
+        destinationDto = DataHelper.createAirportDto(2L);
+        flightDto = DataHelper.createFlightDto(1L, originDto, destinationDto);
+
+        origin = DataHelper.createAirportEntity(1L);
+        destination = DataHelper.createAirportEntity(2L);
+        flight = DataHelper.createFlightEntity(1L, origin, destination);
     }
 
     @Test
@@ -57,24 +64,41 @@ public class FlightServiceUnitTest {
         var result = flightService.getById(1L);
 
         assertNotNull(result);
-        assertEquals(1L, result.getOriginId());
-        assertEquals(2L, result.getDestinationId());
-        verify(flightRepository, times(1)).findById(1L);
+        assertEquals(1L, result.id());
+        assertEquals(originDto.id(), result.origin().id());
+        assertEquals(destinationDto.id(), result.destination().id());
+        verify(flightRepository).findById(1L);
+    }
+
+    @Test
+    public void verifyFlightSaved() {
+        var newFlightEntity = DataHelper.createFlightEntity(0L, origin, destination);
+        var savedFlightEntity = DataHelper.createFlightEntity(1L, origin, destination);
+
+        when(flightRepository.saveAndFlush(newFlightEntity)).thenReturn(savedFlightEntity);
+
+        var result = flightService.save(flightDto);
+
+        assertNotNull(result);
+        assertEquals(1L, result.id());
+        verify(flightRepository).saveAndFlush(any(Flight.class));
     }
 
     @Test
     public void verifyFlightUpdated() {
-        var newFlight = DataHelper.createFlight(2L, origin, destination);
+        var updateDto = new FlightDto(1L, 3, originDto, destinationDto);
+        var updatedFlightEntity = DataHelper.createFlightEntity(1L, origin, destination);
+        updatedFlightEntity.setNumber(3);
 
         when(flightRepository.findById(1L)).thenReturn(Optional.of(flight));
-        when(flightRepository.saveAndFlush(flight)).thenReturn(newFlight);
+        when(flightRepository.saveAndFlush(any(Flight.class))).thenReturn(updatedFlightEntity);
 
-        var result = flightService.update(1L, newFlight);
+        var result = flightService.update(1L, updateDto);
 
-        assertEquals(3, result.getNumber());
-
-        var captor = ArgumentCaptor.forClass(Flight.class);
-        verify(flightRepository).saveAndFlush(captor.capture());
+        assertNotNull(result);
+        assertEquals(3, result.number());
+        verify(flightRepository).findById(1L);
+        verify(flightRepository).saveAndFlush(any(Flight.class));
     }
 
     @Test
@@ -82,22 +106,34 @@ public class FlightServiceUnitTest {
         var page = new PageImpl<>(List.of(flight));
         when(flightRepository.findAll(any(FlightSpecification.class), any(PageRequest.class))).thenReturn(page);
 
-        var flightSpecification = new FlightSpecification("Test City 1", "Test City 2");
-        var result = flightService.findAll(flightSpecification, PageRequest.of(0, 10));
+        var spec = new FlightSpecification("Test City 1", "Test City 2");
+        var result = flightService.findAll(spec, PageRequest.of(0, 10));
 
-        assertEquals(1, result.getSize());
+        assertEquals(1, result.getTotalElements());
         assertEquals(0, result.getNumber());
-        verify(flightRepository, times(1)).findAll(any(FlightSpecification.class), any(PageRequest.class));
+        verify(flightRepository).findAll(any(FlightSpecification.class), any(PageRequest.class));
     }
 
     @Test
-    public void verifyFlightHasBeenDeleted() {
+    public void verifyFlightDeleted() {
+        when(bookingRepository.existsByFlightId(1L)).thenReturn(false);
+        doNothing().when(flightRepository).deleteById(1L);
+
+        flightService.delete(1L);
+
+        verify(bookingRepository).existsByFlightId(1L);
+        verify(flightRepository).deleteById(1L);
+    }
+
+    @Test
+    public void verifyFlightCannotBeDeletedDueToBooking() {
         when(bookingRepository.existsByFlightId(1L)).thenReturn(true);
 
-        ConflictException ex = assertThrows(ConflictException.class, () -> flightService.delete(1L));
+        var ex = assertThrows(ConflictException.class, () -> flightService.delete(1L));
         assertTrue(ex.getMessage().contains("Cannot delete flight with existing bookings."));
 
-        verify(flightRepository, times(0)).deleteById(1L);
+        verify(bookingRepository).existsByFlightId(1L);
+        verify(flightRepository, never()).deleteById(1L);
     }
 
     @Test
@@ -108,5 +144,16 @@ public class FlightServiceUnitTest {
         assertTrue(ex.getMessage().contains("Could not find flight with id: 99"));
 
         verify(flightRepository).findById(99L);
+    }
+
+    @Test
+    public void verifyUpdateThrowsExceptionWhenFlightNotFound() {
+        when(flightRepository.findById(99L)).thenReturn(Optional.empty());
+
+        var ex = assertThrows(ResourceNotFoundException.class, () -> flightService.update(99L, flightDto));
+        assertTrue(ex.getMessage().contains("Could not find flight with id: 99"));
+
+        verify(flightRepository).findById(99L);
+        verify(flightRepository, never()).saveAndFlush(any(Flight.class));
     }
 }

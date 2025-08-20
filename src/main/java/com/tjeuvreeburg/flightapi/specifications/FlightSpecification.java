@@ -1,6 +1,6 @@
 package com.tjeuvreeburg.flightapi.specifications;
 
-import com.tjeuvreeburg.flightapi.entities.Flight;
+import com.tjeuvreeburg.flightapi.models.entities.Flight;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.JoinType;

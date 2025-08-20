@@ -24,9 +24,8 @@ public class BookingControllerFunctionalTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.firstName").value("John"))
-                .andExpect(jsonPath("$.lastName").value("Smith"))
-                .andExpect(jsonPath("$.flightId").value(1L));
+                .andExpect(jsonPath("$.passenger.id").value(1L))
+                .andExpect(jsonPath("$.flight.id").value(1L));
     }
 
     @Test
