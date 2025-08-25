@@ -1,4 +1,6 @@
 # ✈︎ Flight API
+![Static Badge](https://img.shields.io/badge/Spring_Boot-3.5.5-green) ![Static Badge](https://img.shields.io/badge/Java-21-yellow)
+
 
 A Spring Boot REST API for managing airports, flights and bookings.
 
