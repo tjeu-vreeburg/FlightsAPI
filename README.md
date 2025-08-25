@@ -1,4 +1,6 @@
 # ✈︎ Flight API
+![Static Badge](https://img.shields.io/badge/Version-1.0.14--SNAPSHOT-green)
+
 A Spring Boot REST API for managing airports, flights and bookings.
 
 - **Airports, flights, bookings** - Create, delete update and search each entity type
