@@ -8,8 +8,6 @@ A Spring Boot REST API for managing airports, flights and bookings.
 - **Filtering with Specifications** - Easily search for flights based on origin and destination filter
 
 # Technologies
-![Static Badge](https://img.shields.io/badge/Spring_Boot-3.5.5-green) ![Static Badge](https://img.shields.io/badge/Java-21-yellow)
-
 These are all of the different libaries, languages and frameworks used for developing this API.
 - **Backend:** Sprint Boot 3
 - **Database:** JPA (with Hibernate) | H2 (In memory Cache)
