@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version("3.5.4")
+    id("org.springframework.boot") version("3.5.5")
     id("io.spring.dependency-management") version("1.1.0")
     id("java")
 }
@@ -9,7 +9,7 @@ springBoot {
 }
 
 group = "com.tjeuvreeburg.flightapi"
-version = "1.0.12-SNAPSHOT"
+version = "1.0.14-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 java {
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.5.4"))
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.5.5"))
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

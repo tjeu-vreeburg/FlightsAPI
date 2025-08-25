@@ -85,8 +85,7 @@ class AirportServiceUnitTest {
 
     @Test
     public void verifyAirportUpdated() {
-        var updateDto = DataHelper.createAirportDto(2L);
-        updateDto = new AirportDto(
+        var updateDto = new AirportDto(
                 1L,
                 "Updated Airport",
                 "Updated City",
@@ -106,15 +105,18 @@ class AirportServiceUnitTest {
         assertEquals("Updated Airport", result.name());
         assertEquals("Updated City", result.city());
 
-        ArgumentCaptor<Airport> captor = ArgumentCaptor.forClass(Airport.class);
+        var captor = ArgumentCaptor.forClass(Airport.class);
         verify(airportRepository).saveAndFlush(captor.capture());
+
         var capturedAirport = captor.getValue();
+
         assertEquals("Updated Airport", capturedAirport.getName());
         assertEquals("Updated City", capturedAirport.getCity());
 
         verify(airportRepository).findById(1L);
         verify(airportMapper).toDto(airport);
     }
+
 
     @Test
     public void verifyAirportsHaveBeenFound() {
@@ -127,7 +129,7 @@ class AirportServiceUnitTest {
 
         assertEquals(1, result.getTotalElements());
         assertEquals(0, result.getNumber());
-        assertEquals("Test Airport 1", result.getContent().get(0).name());
+        assertEquals("Test Airport 1", result.getContent().getFirst().name());
         verify(airportRepository, times(1)).findAll(any(AirportSpecification.class), any(PageRequest.class));
         verify(airportMapper, times(1)).toDto(airport);
     }
